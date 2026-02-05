@@ -17,7 +17,7 @@ Este projeto apresenta uma **análise bidirecional
 
 ###  Perspectiva 1: Temperatura → Tempo
 
-**Controle Ativo**: Operador ajusta temperatura para otimizar o tempo de processo
+
 
 - Cada 1°C de aumento reduz ~5.74 minutos
 - R² = 46.8%
