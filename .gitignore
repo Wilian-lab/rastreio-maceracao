@@ -1,0 +1,16 @@
+# Ambiente virtual
+.venv/
+venv/
+
+# Dados sensíveis
+dados/*.xlsx
+dados_brutos/
+*.csv
+*.xls
+
+# Relatórios temporários
+*.txt
+
+# Cache
+__pycache__/
+.ipynb_checkpoints/
