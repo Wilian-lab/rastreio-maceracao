@@ -1,9 +1,9 @@
-#  Análise de Maceração: Temperatura ⇄ Tempo
+# Análise de Maceração: Temperatura ⇄ Tempo
 
 ## Sobre o Projeto
 
 Este projeto apresenta uma **análise bidirecional
- completa** da relação entre **Temperatura** e **Tempo de Maceração** no processo industrial.
+completa** da relação entre **Temperatura** e **Tempo de Maceração** no processo industrial.
 
 ### 🔬 Análise Realizada
 
@@ -15,15 +15,13 @@ Este projeto apresenta uma **análise bidirecional
 
 ## Duas Perspectivas
 
-###  Perspectiva 1: Temperatura → Tempo
-
-
+### Perspectiva 1: Temperatura → Tempo
 
 - Cada 1°C de aumento reduz ~5.74 minutos
 - R² = 46.8%
 - Recomendação: Setpoint de 50°C
 
-###  Perspectiva 2: Tempo → Temperatura
+### Perspectiva 2: Tempo → Temperatura
 
 **Perda Térmica Passiva**: Processos longos causam perda de calor
 
@@ -31,9 +29,9 @@ Este projeto apresenta uma **análise bidirecional
 - R² = 46.8%
 - Recomendação: Isolamento térmico ou reaquecimento
 
-##  Visualizar Relatório
+## Visualizar Relatório
 
-** Online (GitHub Pages)**: [Clique aqui para ver o relatório](https://seu-usuario.github.io/rastreio-maceracao/)
+** Online (GitHub Pages)**: [Clique aqui para ver o relatório](https://wilian-lab.github.io/rastreio-maceracao/relatorios/relatorio_completo_tempo_temperatura_20260205_1622.html)
 
 ** Local**: Abra o arquivo `relatorio_completo_tempo_temperatura_20260205_1622.html` no navegador
 
@@ -46,7 +44,7 @@ Este projeto apresenta uma **análise bidirecional
 ✅ Comparativo lado a lado  
 ✅ Recomendações operacionais estratégicas
 
-##  Tecnologias Utilizadas
+## Tecnologias Utilizadas
 
 - **Python 3.12**: Análise de dados
 - **Pandas**: Manipulação de dados
@@ -70,7 +68,7 @@ Rastreio-masceracao/
 └── relatorios_anteriores/             # Versões anteriores (opcional)
 ```
 
-##  Como Usar
+## Como Usar
 
 ### Para Visualizar:
 
@@ -84,11 +82,11 @@ Rastreio-masceracao/
 2. Execute as células sequencialmente
 3. Novo relatório será gerado automaticamente
 
-##  Contato
+## Contato
 
 Para dúvidas ou sugestões sobre a análise, entre em contato.
 
 ---
 
 ** Última Atualização**: 05/02/2026  
-** Relatório Gerado**: Sistema  de Análise Python
+** Relatório Gerado**: Sistema de Análise Python
