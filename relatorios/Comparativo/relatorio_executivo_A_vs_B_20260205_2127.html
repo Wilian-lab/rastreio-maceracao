@@ -1,0 +1,722 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Relatório : Maceração A vs B</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      @media print {
+        body {
+          background: white !important;
+          padding: 0 !important;
+        }
+        .container {
+          box-shadow: none !important;
+          max-width: 100% !important;
+        }
+        .no-print {
+          display: none !important;
+        }
+      }
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        line-height: 1.6;
+        background: #f5f5f5;
+        padding: 20px;
+        color: #333;
+      }
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        background: white;
+        padding: 40px 60px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      }
+      .header {
+        text-align: center;
+        border-bottom: 3px solid #2c3e50;
+        padding-bottom: 20px;
+        margin-bottom: 30px;
+      }
+      .header h1 {
+        font-size: 2.2em;
+        color: #2c3e50;
+        margin-bottom: 10px;
+      }
+      .header .subtitle {
+        font-size: 1.1em;
+        color: #7f8c8d;
+      }
+      .header .date {
+        font-size: 0.95em;
+        color: #95a5a6;
+        margin-top: 10px;
+      }
+      .executive-summary {
+        background: linear-gradient(135deg, #34495e 0%, #2c3e50 100%);
+        color: white;
+        padding: 30px;
+        border-radius: 8px;
+        margin: 30px 0;
+      }
+      .executive-summary h2 {
+        font-size: 1.8em;
+        margin-bottom: 20px;
+        color: white;
+        border: none;
+        padding: 0;
+        text-align: center;
+      }
+      .executive-summary .conclusion {
+        font-size: 1.1em;
+        line-height: 1.9;
+        padding: 20px;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 5px;
+        border-left: 4px solid #3498db;
+      }
+      .executive-summary .conclusion strong {
+        color: #3498db;
+        font-size: 1.1em;
+      }
+      h2 {
+        color: #2c3e50;
+        font-size: 1.6em;
+        margin-top: 40px;
+        margin-bottom: 20px;
+        padding-bottom: 10px;
+        border-bottom: 2px solid #3498db;
+      }
+      h3 {
+        color: #34495e;
+        font-size: 1.3em;
+        margin-top: 25px;
+        margin-bottom: 15px;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px 0;
+        font-size: 0.95em;
+      }
+      thead {
+        background: #34495e;
+        color: white;
+      }
+      th {
+        padding: 12px;
+        text-align: left;
+        font-weight: 600;
+      }
+      td {
+        padding: 10px 12px;
+        border-bottom: 1px solid #ecf0f1;
+      }
+      tbody tr:nth-child(even) {
+        background: #f8f9fa;
+      }
+      tbody tr:hover {
+        background: #e8f4f8;
+      }
+      .favorable-cell {
+        background: #d4edda !important;
+        font-weight: bold;
+        color: #155724;
+      }
+      .highlight-positive {
+        color: #28a745;
+        font-weight: bold;
+      }
+      .highlight-negative {
+        color: #dc3545;
+        font-weight: bold;
+      }
+      ul {
+        margin: 15px 0;
+        padding-left: 25px;
+        line-height: 1.8;
+      }
+      li {
+        margin: 8px 0;
+      }
+      .info-box {
+        background: #e7f3ff;
+        border-left: 5px solid #3498db;
+        padding: 20px;
+        margin: 25px 0;
+        border-radius: 5px;
+      }
+      .info-box h3 {
+        color: #2980b9;
+        margin-top: 0;
+      }
+      .warning-box {
+        background: #fff3cd;
+        border-left: 5px solid #ffc107;
+        padding: 20px;
+        margin: 25px 0;
+        border-radius: 5px;
+      }
+      .warning-box h3 {
+        color: #856404;
+        margin-top: 0;
+      }
+      .comparison-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 30px;
+        margin: 25px 0;
+      }
+      .process-summary {
+        border: 2px solid #dee2e6;
+        border-radius: 8px;
+        padding: 20px;
+        background: #f8f9fa;
+      }
+      .process-summary h3 {
+        margin-top: 0;
+        text-align: center;
+        padding-bottom: 10px;
+        border-bottom: 2px solid currentColor;
+      }
+      .process-summary .stat-line {
+        display: flex;
+        justify-content: space-between;
+        padding: 8px 0;
+        border-bottom: 1px solid #dee2e6;
+      }
+      .process-summary .stat-line:last-child {
+        border-bottom: none;
+      }
+      .process-summary .stat-label {
+        color: #6c757d;
+        font-weight: 500;
+      }
+      .process-summary .stat-value {
+        font-weight: bold;
+        color: #2c3e50;
+      }
+      footer {
+        margin-top: 50px;
+        padding-top: 20px;
+        border-top: 2px solid #dee2e6;
+        text-align: center;
+        color: #6c757d;
+        font-size: 0.9em;
+      }
+      .criteria-table {
+        margin: 30px 0;
+      }
+      .criteria-table td {
+        padding: 14px 12px;
+      }
+      .criteria-table td:first-child {
+        font-weight: 600;
+        color: #2c3e50;
+        width: 40%;
+      }
+      .recommendation-box {
+        background: #f8f9fa;
+        border: 2px solid #3498db;
+        border-radius: 8px;
+        padding: 25px;
+        margin: 30px 0;
+      }
+      .recommendation-box h3 {
+        color: #2c3e50;
+        margin-top: 0;
+        font-size: 1.4em;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <h1>Análise Comparativa: Maceração A vs B</h1>
+        <div class="subtitle">Relatório Executivo</div>
+        <div class="date">Gerado em 05/02/2026 às 21:27</div>
+      </div>
+
+      <div class="executive-summary">
+        <h2>RESUMO</h2>
+        <div class="conclusion">
+          <p>
+            Com base na análise estatística de 17 meses de dados operacionais, a
+            <strong>Maceração A</strong> demonstrou desempenho superior em 3 dos
+            4 critérios técnicos avaliados.
+          </p>
+
+          <p style="margin-top: 15px">
+            <strong>Recomendação:</strong> Adotar Maceração A como padrão
+            operacional, considerando os benefícios em controle térmico,
+            previsibilidade e estabilidade do processo.
+          </p>
+        </div>
+      </div>
+
+      <h2>Período Analisado</h2>
+      <div class="info-box">
+        <p>
+          <strong>Maceração A:</strong> September/2024 até January/2026 (17
+          meses)
+        </p>
+        <p>
+          <strong>Maceração B:</strong> September/2024 até January/2026 (17
+          meses)
+        </p>
+      </div>
+
+      <h2>Avaliação por Critérios Técnicos</h2>
+      <table class="criteria-table">
+        <thead>
+          <tr>
+            <th>Critério</th>
+            <th>Maceração A</th>
+            <th>Maceração B</th>
+            <th>Processo Favorável</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1. Controle Térmico</td>
+            <td>0.57°C</td>
+            <td>0.87°C</td>
+            <td class="favorable-cell">Maceração A</td>
+          </tr>
+          <tr>
+            <td>2. Eficiência de Tempo</td>
+            <td>67.8 min</td>
+            <td>62.4 min</td>
+            <td class="">Maceração B</td>
+          </tr>
+          <tr>
+            <td>3. Previsibilidade (R²)</td>
+            <td>12.7%</td>
+            <td>9.7%</td>
+            <td class="favorable-cell">Maceração A</td>
+          </tr>
+          <tr>
+            <td>4. Estabilidade Térmica</td>
+            <td>0.0281°C/min</td>
+            <td>0.0331°C/min</td>
+            <td class="favorable-cell">Maceração A</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2>Indicadores-Chave de Desempenho (KPIs)</h2>
+
+      <div class="comparison-row">
+        <div class="process-summary">
+          <h3 style="color: #8b0000">🔴 Maceração A</h3>
+          <div class="stat-line">
+            <span class="stat-label">Temperatura Média</span>
+            <span class="stat-value">49.77°C</span>
+          </div>
+          <div class="stat-line">
+            <span class="stat-label">Variação Térmica (±)</span>
+            <span class="stat-value">0.57°C</span>
+          </div>
+          <div class="stat-line">
+            <span class="stat-label">Tempo Médio</span>
+            <span class="stat-value">67.8 min</span>
+          </div>
+          <div class="stat-line">
+            <span class="stat-label">Previsibilidade (R²)</span>
+            <span class="stat-value">12.7%</span>
+          </div>
+          <div class="stat-line">
+            <span class="stat-label">Taxa de Variação Térmica</span>
+            <span class="stat-value highlight-negative">
+              0.0281°C/min (Perda)
+            </span>
+          </div>
+          <div class="stat-line">
+            <span class="stat-label">Critérios Favoráveis</span>
+            <span class="stat-value" style="font-size: 1.2em; color: #3498db"
+              >3 de 4</span
+            >
+          </div>
+        </div>
+
+        <div class="process-summary">
+          <h3 style="color: #00008b">🔵 Maceração B</h3>
+          <div class="stat-line">
+            <span class="stat-label">Temperatura Média</span>
+            <span class="stat-value">48.73°C</span>
+          </div>
+          <div class="stat-line">
+            <span class="stat-label">Variação Térmica (±)</span>
+            <span class="stat-value">0.87°C</span>
+          </div>
+          <div class="stat-line">
+            <span class="stat-label">Tempo Médio</span>
+            <span class="stat-value">62.4 min</span>
+          </div>
+          <div class="stat-line">
+            <span class="stat-label">Previsibilidade (R²)</span>
+            <span class="stat-value">9.7%</span>
+          </div>
+          <div class="stat-line">
+            <span class="stat-label">Taxa de Variação Térmica</span>
+            <span class="stat-value highlight-positive">
+              0.0331°C/min (Ganho)
+            </span>
+          </div>
+          <div class="stat-line">
+            <span class="stat-label">Critérios Favoráveis</span>
+            <span class="stat-value" style="font-size: 1.2em; color: #3498db"
+              >1 de 4</span
+            >
+          </div>
+        </div>
+      </div>
+
+      <h2>Análise Estatística Detalhada</h2>
+
+      <h3>Estatísticas Descritivas</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Métrica</th>
+            <th>Maceração A</th>
+            <th>Maceração B</th>
+            <th>Diferença</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Temp Média (°C)</strong></td>
+            <td class="favorable-cell">49.77</td>
+            <td class="">48.73</td>
+            <td>-2.08%</td>
+          </tr>
+
+          <tr>
+            <td><strong>Temp Desvio Padrão (°C)</strong></td>
+            <td class="favorable-cell">0.57</td>
+            <td class="">0.87</td>
+            <td>52.19%</td>
+          </tr>
+
+          <tr>
+            <td><strong>Temp Mínima (°C)</strong></td>
+            <td class="favorable-cell">48.32</td>
+            <td class="">47.58</td>
+            <td>-1.53%</td>
+          </tr>
+
+          <tr>
+            <td><strong>Temp Máxima (°C)</strong></td>
+            <td class="">50.58</td>
+            <td class="favorable-cell">50.63</td>
+            <td>0.10%</td>
+          </tr>
+
+          <tr>
+            <td><strong>Variabilidade Interna (°C)</strong></td>
+            <td class="favorable-cell">0.71</td>
+            <td class="">0.51</td>
+            <td>-27.44%</td>
+          </tr>
+
+          <tr>
+            <td><strong>Tempo Médio (min)</strong></td>
+            <td class="">67.76</td>
+            <td class="favorable-cell">62.41</td>
+            <td>-7.90%</td>
+          </tr>
+
+          <tr>
+            <td><strong>Tempo Desvio Padrão (min)</strong></td>
+            <td class="favorable-cell">7.24</td>
+            <td class="">8.19</td>
+            <td>13.12%</td>
+          </tr>
+
+          <tr>
+            <td><strong>Tempo Mínimo (min)</strong></td>
+            <td class="favorable-cell">50.83</td>
+            <td class="">51.33</td>
+            <td>0.97%</td>
+          </tr>
+
+          <tr>
+            <td><strong>Tempo Máximo (min)</strong></td>
+            <td class="favorable-cell">80.02</td>
+            <td class="">82.52</td>
+            <td>3.13%</td>
+          </tr>
+
+          <tr>
+            <td><strong>Nº Observações</strong></td>
+            <td class="">17.00</td>
+            <td class="favorable-cell">17.00</td>
+            <td>0.00%</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>Análise de Regressão Linear</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Parâmetro</th>
+            <th>Maceração A</th>
+            <th>Maceração B</th>
+            <th>Interpretação</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Equação</strong></td>
+            <td>Temp = -0.028107×Tempo + 51.67</td>
+            <td>Temp = 0.033149×Tempo + 46.66</td>
+            <td>Modelo matemático do processo</td>
+          </tr>
+          <tr>
+            <td><strong>Correlação (r)</strong></td>
+            <td>-0.3561</td>
+            <td>0.3122</td>
+            <td>A apresenta correlação mais forte</td>
+          </tr>
+          <tr>
+            <td><strong>R² (Poder Explicativo)</strong></td>
+            <td class="favorable-cell">0.1268 (12.7%)</td>
+            <td class="">0.0974 (9.7%)</td>
+            <td>Capacidade preditiva do modelo</td>
+          </tr>
+          <tr>
+            <td><strong>P-valor</strong></td>
+            <td>0.160665</td>
+            <td>0.222538</td>
+            <td>Significância estatística da correlação</td>
+          </tr>
+          <tr>
+            <td><strong>Coeficiente Angular</strong></td>
+            <td class="highlight-negative">-0.028107°C/min</td>
+            <td class="highlight-positive">0.033149°C/min</td>
+            <td>A: Perde temperatura | B: Ganha temperatura</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>Testes Estatísticos de Hipótese</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Teste</th>
+            <th>Variável</th>
+            <th>Estatística</th>
+            <th>P-valor</th>
+            <th>Resultado (α = 0.05)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Teste t de Student</strong></td>
+            <td>Temperatura</td>
+            <td>t = 4.1061</td>
+            <td>0.000260</td>
+            <td>Diferença estatisticamente significativa</td>
+          </tr>
+          <tr>
+            <td><strong>Teste t de Student</strong></td>
+            <td>Tempo de Processo</td>
+            <td>t = 2.0202</td>
+            <td>0.051799</td>
+            <td>Não há diferença significativa</td>
+          </tr>
+          <tr>
+            <td><strong>Teste F (Variância)</strong></td>
+            <td>Temperatura</td>
+            <td>F = 0.4318</td>
+            <td>0.102946</td>
+            <td>Variâncias homogêneas</td>
+          </tr>
+          <tr>
+            <td><strong>Teste F (Variância)</strong></td>
+            <td>Tempo de Processo</td>
+            <td>F = 0.7814</td>
+            <td>0.627699</td>
+            <td>Variâncias homogêneas</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2>⚠️ Observações Críticas</h2>
+
+      <div class="warning-box">
+        <h3>Comportamento Térmico Divergente</h3>
+        <p>
+          <strong>Achado Importante:</strong> Os dois processos apresentam
+          comportamentos térmicos opostos durante a maceração:
+        </p>
+        <ul>
+          <li>
+            <strong>Maceração A:</strong> Perda térmica progressiva de 0.0281°C
+            por minuto de processo
+          </li>
+          <li>
+            <strong>Maceração B:</strong> Ganho térmico progressivo de 0.0331°C
+            por minuto de processo
+          </li>
+        </ul>
+        <p>
+          <strong>Implicação Operacional:</strong> Em processos de longa
+          duração, essa divergência térmica resultará em diferenças
+          significativas de temperatura final, podendo impactar a qualidade e
+          características do produto. Recomenda-se investigação técnica das
+          causas raiz (isolamento térmico, controle de equipamentos, fontes de
+          calor/resfriamento).
+        </p>
+      </div>
+
+      <div class="info-box">
+        <h3>Características Distintivas de Cada Processo</h3>
+        <p><strong>Maceração A - Pontos Fortes:</strong></p>
+        <ul>
+          <li>Controle térmico superior: variação de apenas ±0.57°C</li>
+          <li>Maior previsibilidade: R² de 12.7%</li>
+          <li>Taxa de variação térmica mais estável: 0.0281°C/min</li>
+        </ul>
+        <p><strong>Maceração B - Pontos Fortes:</strong></p>
+        <ul>
+          <li>Maior eficiência temporal: tempo médio de 62.4 minutos</li>
+        </ul>
+      </div>
+
+      <h2>Recomendações</h2>
+
+      <div class="recommendation-box">
+        <h3>Processo Recomendado: Maceração A</h3>
+        <p>
+          <strong>Fundamentação Técnica:</strong> A Maceração A demonstrou
+          desempenho superior em 3 dos 4 critérios técnicos avaliados, indicando
+          maior confiabilidade e consistência operacional.
+        </p>
+
+        <p><strong>Ações Imediatas Recomendadas:</strong></p>
+        <ul>
+          <li>
+            <strong>Padronização Operacional:</strong> Adotar Maceração A como
+            processo padrão para novas ordens de produção
+          </li>
+          <li>
+            <strong>Investigação Técnica:</strong> Conduzir análise das causas
+            do comportamento térmico divergente (verificar isolamento, sistema
+            de aquecimento/resfriamento, e condições de contorno)
+          </li>
+          <li>
+            <strong>Implementação de Controle Estatístico:</strong> Estabelecer
+            limites de controle (CEP) para temperatura e tempo em ambos os
+            processos
+          </li>
+          <li>
+            <strong>Otimização de Processo:</strong> Avaliar oportunidades de
+            redução de tempo sem comprometer qualidade ou especificações
+            técnicas
+          </li>
+          <li>
+            <strong>Transferência de Conhecimento:</strong> Documentar e
+            replicar práticas da Maceração A que resultam em melhor desempenho
+          </li>
+        </ul>
+
+        <p><strong>Planejamento de Médio Prazo:</strong></p>
+        <ul>
+          <li>
+            Estudo de correlação entre parâmetros de processo (temp/tempo) e
+            indicadores de qualidade do produto final
+          </li>
+          <li>
+            Análise de viabilidade técnico-econômica de melhorias em sistemas de
+            controle térmico
+          </li>
+          <li>
+            Desenvolvimento e implementação de Procedimentos Operacionais Padrão
+            (POP) baseados em evidências
+          </li>
+          <li>
+            Programa de capacitação técnica da equipe operacional sobre padrões
+            de desempenho e variabilidade aceitável
+          </li>
+          <li>
+            Estabelecimento de indicadores-chave de desempenho (KPIs) para
+            monitoramento contínuo
+          </li>
+        </ul>
+      </div>
+
+      <h2>Síntese</h2>
+
+      <table>
+        <thead>
+          <tr>
+            <th style="width: 30%">Aspecto</th>
+            <th>Conclusão</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Processo Recomendado</strong></td>
+            <td>
+              <strong>Maceração A</strong> (desempenho favorável em 3 de 4
+              critérios técnicos)
+            </td>
+          </tr>
+          <tr>
+            <td><strong>Principal Vantagem A</strong></td>
+            <td>Controle térmico consistente: variação de ±0.57°C</td>
+          </tr>
+          <tr>
+            <td><strong>Principal Vantagem B</strong></td>
+            <td>Eficiência temporal: 62.4 min em média</td>
+          </tr>
+          <tr>
+            <td><strong>Ponto de Atenção Crítico</strong></td>
+            <td>
+              Comportamento térmico divergente: Maceração A apresenta perda
+              térmica enquanto Maceração B apresenta ganho térmico ao longo do
+              processo
+            </td>
+          </tr>
+          <tr>
+            <td><strong>Prioridade de Ação</strong></td>
+            <td>
+              Padronizar operações utilizando Maceração A e investigar causas
+              raiz do comportamento térmico da Maceração B
+            </td>
+          </tr>
+          <tr>
+            <td><strong>Oportunidade de Melhoria</strong></td>
+            <td>
+              Ganho potencial de 7.9% em eficiência temporal e redução da
+              variabilidade térmica do processo
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <footer>
+        <p><strong>Relatório de Análise Comparativa</strong></p>
+        <p>Processos de Maceração A e B</p>
+        <p>05 de February de 2026</p>
+        <p style="margin-top: 15px; font-size: 0.85em">
+          <strong>Metodologia Aplicada:</strong> Análise de regressão linear,
+          testes de hipóteses paramétricos (t-test, F-test), estatística
+          descritiva<br />
+          <strong>Ferramentas:</strong> Python (Pandas, SciPy, NumPy), Jupyter
+          Notebook<br />
+          <strong>Período Analisado:</strong> 17 meses de dados operacionais |
+          <strong>Nível de Confiança:</strong> 95% (α = 0.05)
+        </p>
+      </footer>
+    </div>
+  </body>
+</html>

@@ -3,50 +3,247 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <!-- Redirecionamento automático -->
-    <meta
-      http-equiv="refresh"
-      content="0; url=/rastreio-maceracao/relatorios/relatorio_completo_tempo_temperatura_20260205_1622.html"
-    />
-
-    <title>Redirecionando...</title>
+    <title>Análise de Maceração - Rastreio e Comparação</title>
 
     <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
       body {
         font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-        margin: 0;
         background: linear-gradient(135deg, #667eea, #764ba2);
         color: white;
+        padding: 20px;
+        line-height: 1.6;
       }
-      .loader {
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        border-radius: 20px;
+        padding: 40px;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+      }
+
+      h1 {
         text-align: center;
+        font-size: 2.5em;
+        margin-bottom: 10px;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
       }
-      a {
-        color: #fff;
-        text-decoration: underline;
-        font-size: 18px;
+
+      .subtitle {
+        text-align: center;
+        font-size: 1.2em;
+        margin-bottom: 40px;
+        opacity: 0.9;
+      }
+
+      .reports-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
+        margin-top: 40px;
+      }
+
+      .report-card {
+        background: rgba(255, 255, 255, 0.15);
+        border-radius: 15px;
+        padding: 30px;
+        transition:
+          transform 0.3s ease,
+          box-shadow 0.3s ease;
+        border: 2px solid rgba(255, 255, 255, 0.2);
+        text-decoration: none;
+        color: white;
+        display: block;
+      }
+
+      .report-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+        background: rgba(255, 255, 255, 0.2);
+      }
+
+      .report-card h2 {
+        font-size: 1.8em;
+        margin-bottom: 15px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .report-card .icon {
+        font-size: 1.2em;
+      }
+
+      .report-card p {
+        margin-bottom: 12px;
+        opacity: 0.95;
+      }
+
+      .report-card .details {
+        margin-top: 20px;
+        padding-top: 20px;
+        border-top: 1px solid rgba(255, 255, 255, 0.3);
+        font-size: 0.95em;
+      }
+
+      .report-card .badge {
+        display: inline-block;
+        background: rgba(255, 255, 255, 0.25);
+        padding: 5px 12px;
+        border-radius: 15px;
+        font-size: 0.85em;
+        margin-right: 8px;
+        margin-top: 10px;
+      }
+
+      .highlight {
+        background: rgba(255, 215, 0, 0.3);
+        padding: 2px 6px;
+        border-radius: 3px;
+        font-weight: bold;
+      }
+
+      footer {
+        text-align: center;
+        margin-top: 50px;
+        padding-top: 30px;
+        border-top: 1px solid rgba(255, 255, 255, 0.3);
+        opacity: 0.8;
+        font-size: 0.95em;
+      }
+
+      .btn-primary {
+        background: rgba(255, 255, 255, 0.3);
+        padding: 12px 25px;
+        border-radius: 25px;
+        display: inline-block;
+        margin-top: 15px;
+        font-weight: bold;
+        transition: background 0.3s ease;
+      }
+
+      .btn-primary:hover {
+        background: rgba(255, 255, 255, 0.4);
+      }
+
+      @media (max-width: 768px) {
+        .container {
+          padding: 20px;
+        }
+
+        h1 {
+          font-size: 2em;
+        }
+
+        .reports-grid {
+          grid-template-columns: 1fr;
+        }
       }
     </style>
   </head>
 
   <body>
-    <div class="loader">
-      <h2>Redirecionando para o relatório…</h2>
-      <p>
-        Se não abrir automaticamente,
-        <br /><br />
-        <a
-          href="/rastreio-maceracao/relatorios/relatorio_completo_tempo_temperatura_20260205_1622.html"
-          target="_blank"
-        >
-          Clique aqui para abrir o relatório
-        </a>
+    <div class="container">
+      <h1>🔬 Análise de Maceração</h1>
+      <p class="subtitle">
+        Rastreio de Temperatura e Tempo | Processos A e B | Análise Comparativa
       </p>
+
+      <div class="reports-grid">
+        <!-- Maceração A -->
+        <a
+          href="/rastreio-maceracao/relatorios/Maceracao_A/relatorio_completo_tempo_temperatura_20260205_1622.html"
+          class="report-card"
+        >
+          <h2><span class="icon">🔴</span> Maceração A</h2>
+          <p>
+            <strong>Análise completa do processo A</strong><br />
+            Estudo bidirecional da relação Temperatura ⇄ Tempo
+          </p>
+          <div class="details">
+            <p><strong>Período:</strong> Nov/2024 - Jan/2026 (7 meses)</p>
+            <p><strong>Correlação:</strong> -0.684 (moderada a forte)</p>
+            <p><strong>Taxa:</strong> Perda de 0.0815°C/min</p>
+            <p><strong>Eficiência:</strong> -5.74 min por 1°C</p>
+            <span class="badge">Gráficos</span>
+            <span class="badge">Regressão</span>
+            <span class="badge">Recomendações</span>
+          </div>
+          <div class="btn-primary">Ver Relatório Completo →</div>
+        </a>
+
+        <!-- Maceração B -->
+        <a
+          href="/rastreio-maceracao/relatorios/Maceracao_B/relatorio_completo_tempo_temperatura_B_20260205_2046.html"
+          class="report-card"
+        >
+          <h2><span class="icon">🔵</span> Maceração B</h2>
+          <p>
+            <strong>Análise completa do processo B</strong><br />
+            Estudo bidirecional da relação Temperatura ⇄ Tempo
+          </p>
+          <div class="details">
+            <p><strong>Período:</strong> Set/2024 - Jan/2026 (17 meses)</p>
+            <p><strong>Correlação:</strong> +0.312 (positiva)</p>
+            <p><strong>Taxa:</strong> Ganho de 0.0331°C/min</p>
+            <p><strong>Eficiência:</strong> 7.9% mais rápido que A</p>
+            <span class="badge">Gráficos</span>
+            <span class="badge">Regressão</span>
+            <span class="badge">Recomendações</span>
+          </div>
+          <div class="btn-primary">Ver Relatório Completo →</div>
+        </a>
+
+        <!-- Comparativo A vs B -->
+        <a
+          href="/rastreio-maceracao/relatorios/Comparativo/relatorio_executivo_A_vs_B_20260205_2127.html"
+          class="report-card"
+          style="grid-column: span 1"
+        >
+          <h2><span class="icon">⚖️</span> Comparativo A vs B</h2>
+          <p>
+            <strong>Análise Estratégica Comparativa</strong><br />
+            Relatório executivo profissional sem gráficos
+          </p>
+          <div class="details">
+            <p>
+              <strong>Período:</strong> Set/2024 - Jan/2026 (17 meses alinhados)
+            </p>
+            <p><strong>Critérios:</strong> 4 avaliações técnicas</p>
+            <p>
+              <strong>Recomendado:</strong>
+              <span class="highlight">Maceração A</span> (3 de 4 critérios)
+            </p>
+            <p>
+              <strong>Achado Crítico:</strong> Comportamentos térmicos opostos
+            </p>
+            <span class="badge">Sem Imagens</span>
+            <span class="badge">Executivo</span>
+            <span class="badge">Testes Estatísticos</span>
+            <span class="badge">Recomendações</span>
+          </div>
+          <div class="btn-primary">Ver Análise Comparativa →</div>
+        </a>
+      </div>
+
+      <footer>
+        <p>
+          <strong>Sistema de Análise Estatística</strong><br />
+          Python + Pandas + SciPy + Matplotlib + Seaborn
+        </p>
+        <p style="margin-top: 15px">
+          Última Atualização: 05/02/2026<br />
+          Análises completas: Maceração A, Maceração B e Comparativo A vs B
+        </p>
+      </footer>
     </div>
   </body>
 </html>
