@@ -37,7 +37,11 @@ Este projeto apresenta uma **análise estatística completa** dos processos de *
 
 ### Maceração B
 
-**Local**: Abra `relatorios/Maceracao_B/relatorio_completo*.html` no navegador
+**Online (GitHub Pages)**:  
+[Clique aqui para ver o relatório](https://wilian-lab.github.io/rastreio-maceracao/relatorios/Maceracao_B/relatorio_tempo_temperatura_B_20260205_2202.html)
+
+**Local**:  
+Abra `relatorios/Maceracao_B/relatorio_tempo_temperatura_B_20260205_2202.html` no navegador
 
 ### Análise Comparativa A vs B
 
